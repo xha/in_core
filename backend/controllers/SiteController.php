@@ -128,10 +128,7 @@ class SiteController extends Controller
                 $table->apellido = $model->apellido;
                 $table->sexo = $model->sexo;
                 $table->telefono = $model->telefono;
-                $table->id_rol = 1;
-                $table->id_pregunta = $model->id_pregunta;
                 $table->respuesta_seguridad = $model->respuesta_seguridad;
-                $table->id_unidad = $model->id_unidad;
                 $table->activo = 0;
                 $table->clave = md5("is".$model->clave);
                 
@@ -286,10 +283,10 @@ class SiteController extends Controller
     public function actionBuscaUsuarios() {
         $connection = \Yii::$app->db;
         
-        $query = "select u.usuario, u.cedula, CONCAT(u.apellido,', ',u.nombre) as nombre,d.descripcion as ubicacion, r.descripcion as rol, u.activo
-            from ISPR_Usuario u, ISPR_Unidad d, ISPR_Rol r
-            WHERE u.id_unidad=d.id_unidad and r.id_rol=u.id_rol
-            ORDER BY ubicacion,nombre";
+        $query = "select *
+            from IS_UsuariosCore
+            WHERE 1=1
+            ORDER BY nombre";
 
         $pendientes = $connection->createCommand($query)->queryAll();
         //$pendientes = $comand->readAll();

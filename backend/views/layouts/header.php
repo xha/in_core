@@ -24,7 +24,7 @@ use yii\helpers\Html;
                     } else {
                 ?>              
                     <?= Html::a(
-                        'Logout (Usuario: '.Yii::$app->user->identity->usuario.', Ubic: '.Yii::$app->user->identity->id_unidad.')',
+                        'Logout (Usuario: '.Yii::$app->user->identity->usuario.')',
                         ['/site/logout'],
                         ['data-method' => 'post']
                     ) ?>
